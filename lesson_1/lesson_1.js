@@ -11,7 +11,7 @@ let sponsors = {
 
 let {cash, eu, rus} = sponsors;
 
-function calcCash(...own) {
+let calcCash = (...own) => {
     let total = own[1].reduce((firstVal, lastVal) => firstVal + lastVal, own[0]);
     return total;
 }
@@ -20,7 +20,8 @@ function calcCash(...own) {
 let money = calcCash(null, cash);
 
 function makeBusiness(owner, director = 'Victor', cash, emp){
-    let sumSponsors = eu.concat(rus, 'unexpected sponsor');
+    let sumSponsors = [...eu, 'unexpected sponsor'];
+
     console.log(`We have a buisness. Owner: ${owner}, director: ${director}. Our budget: ${cash}. And our emplouers: ${emp} \n And we have a sponsors:\n ${null, sumSponsors} \n Note. Be careful with ${eu[0]}. It's a huge risk.`);
 }
 
