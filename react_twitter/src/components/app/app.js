@@ -11,6 +11,7 @@ const App = () => {
 
     const data = [
         0,
+        'uyitgh',
         {label: 'Going to learn react', important: true, id: 'jkg'},
         {label: 'That is so good', important: false, id: 'gfg'},
         {label: 'I need a sea.. :)', important: false, id: 'jhf'}
