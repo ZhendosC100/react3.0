@@ -6,7 +6,7 @@ const PostList = ({posts})=> {
 
     console.log(posts);
 
-    const postsFilt = posts.filter(item => typeof(item) === 'object');
+    const postsFilt = posts.filter(item => typeof(item) === 'object' && item !== null && item !== undefined && item !== Boolean && Array.isArray(item)=== false);
     
     const elements = postsFilt.map((item) => {
         const {id, ...itemProps} = item;
