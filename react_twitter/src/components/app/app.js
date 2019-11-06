@@ -20,9 +20,11 @@ export default class App extends Component {
         super(props);
         this.state={
             data: [
-                {label: 'Going to learn react', important: true, id: '1'},
-                {label: 'That is so good', important: false, id: '2'},
-                {label: 'I need a sea.. :)', important: false, id: '3'}
+                0,
+                'khjgh',
+                {label: 'Going to learn react', important: true, id: 'er'},
+                {label: 'That is so good', important: false, id: 'erf'},
+                {label: 'I need a sea.. :)', important: false, id: 'xvb'}
             ]
         };
         this.deleteItem = this.deleteItem.bind(this);
@@ -33,7 +35,10 @@ export default class App extends Component {
 
     deleteItem(id){
         this.setState(({data}) => {
-            const index = data.findIndex(elem => elem.id === id);
+            const dataFilt = data.filter(item => typeof(item) === 'object' && 
+        item !== null && item !== undefined && item !== Boolean && Array.isArray(item)=== false);
+            const index = dataFilt.findIndex(elem => elem.id === id);
+            // const index = data.findIndex(elem => elem.id === id);
 
             // const before = data.slice(0, index);
             // const after = data.slice(index + 1);
@@ -41,7 +46,7 @@ export default class App extends Component {
             // const newArr = [...before, ...after];
 
 
-            const newArr = [...data.slice(0, index), ...data.slice(index + 1)];
+            const newArr = [...dataFilt.slice(0, index), ...dataFilt.slice(index + 1)];
             return {
                 data: newArr
             }
