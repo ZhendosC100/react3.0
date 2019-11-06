@@ -2,11 +2,10 @@ import React from 'react';
 import './post-list.css';
 import PostListItem from '../post-list-item';
 
-const PostList = ({posts})=> {
+const PostList = ({posts, onDelete})=> {
 
-    console.log(posts);
-
-    const postsFilt = posts.filter(item => typeof(item) === 'object' && item !== null && item !== undefined && item !== Boolean && Array.isArray(item)=== false);
+    const postsFilt = posts.filter(item => typeof(item) === 'object' && 
+        item !== null && item !== undefined && item !== Boolean && Array.isArray(item)=== false);
     
     const elements = postsFilt.map((item) => {
         const {id, ...itemProps} = item;
@@ -16,6 +15,7 @@ const PostList = ({posts})=> {
     
                         // label={item.label}
                         // important={item.important}
+                        onDelete={() => onDelete(id)}
                     />
                 </li>
             )
