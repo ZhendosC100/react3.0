@@ -1,4 +1,5 @@
 import React from 'react';
+import { ListGroup, ListGroupItem } from 'reactstrap';
 import './post-list.css';
 import PostListItem from '../post-list-item';
 
@@ -10,23 +11,23 @@ const PostList = ({posts, onDelete})=> {
     const elements = postsFilt.map((item) => {
         const {id, ...itemProps} = item;
             return (
-                <li key={id} className='list-group-item'>
+                <ListGroupItem key={id}>
                     <PostListItem {...itemProps}
     
                         // label={item.label}
                         // important={item.important}
                         onDelete={() => onDelete(id)}
                     />
-                </li>
+                </ListGroupItem>
             )
 
         
     });
 
     return(
-        <ul className="app-list list-group">
+        <ListGroup className="app-list">
             {elements}
-        </ul>
+        </ListGroup>
     )
 }
 

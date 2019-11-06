@@ -5,7 +5,15 @@ import SearchPanel from '../search-panel';
 import PostStatusFilter from '../post-status-filter';
 import PostList from '../post-list';
 import PostAddForm from '../post-add-form';
-import './app.css';
+import styled from 'styled-components';
+
+import nextId from "react-id-generator";
+// import './app.css';
+
+const AppBlock = styled.div`
+        margin: 0 auto
+        max-width: 800px
+`
 
 export default class App extends Component {
     constructor(props){
@@ -20,7 +28,7 @@ export default class App extends Component {
         this.deleteItem = this.deleteItem.bind(this);
         this.addItem = this.addItem.bind(this);
 
-        this.maxId = 4;
+        this.maxId = nextId('new_id_');;
     }
 
     deleteItem(id){
@@ -44,7 +52,7 @@ export default class App extends Component {
         const newItem = {
             label: body,
             important: false,
-            id: this.maxId++
+            id: this.maxId
         }
         this.setState(({data}) => {
             const newArr = [...data, newItem];
@@ -56,7 +64,7 @@ export default class App extends Component {
 
     render() {
         return (
-            <div className="app">
+            <AppBlock className="app">
                 <AppHeader/>
                 <div className='search-panel d-flex'>
                     <SearchPanel/>
@@ -67,7 +75,7 @@ export default class App extends Component {
                     onDelete={this.deleteItem}/>
                 <PostAddForm
                 onAdd={this.addItem}/>
-            </div>
+            </AppBlock>
         );
     }
 }
