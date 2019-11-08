@@ -16,11 +16,11 @@ const AppHeaderBlock = styled.div`
     }
 `
 
-const AppHeader = () => {
+const AppHeader = ({liked, allPosts}) => {
     return(
         <AppHeaderBlock className="app-header d-flex">
             <h1>Yauhen Tretsyak</h1>
-            <h2>5 records, liked 0</h2>
+            <h2>{allPosts} posts, liked {liked}</h2>
         </AppHeaderBlock>
     )
 }
