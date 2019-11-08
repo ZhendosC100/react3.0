@@ -3,7 +3,7 @@ import { ListGroup, ListGroupItem } from 'reactstrap';
 import './post-list.css';
 import PostListItem from '../post-list-item';
 
-const PostList = ({posts, onDelete, onToggleImportant, onToggleLiked})=> {
+const PostList = ({posts, onDelete, onToggle})=> {
 
     const postsFilt = posts.filter(item => typeof(item) === 'object' && 
         item !== null && item !== undefined && item !== Boolean && Array.isArray(item)=== false);
@@ -12,13 +12,14 @@ const PostList = ({posts, onDelete, onToggleImportant, onToggleLiked})=> {
         const {id, ...itemProps} = item;
             return (
                 <ListGroupItem key={id}>
-                    <PostListItem {...itemProps}
-    
+                    <PostListItem 
+                    
+                        {...itemProps}
                         // label={item.label}
                         // important={item.important}
                         onDelete={() => onDelete(id)}
-                        onToggleImportant={() => onToggleImportant(id)}
-                        onToggleLiked={() => onToggleLiked(id)}
+                        onToggleImportant={() => onToggle(id, true)}
+                        onToggleLiked={() => onToggle(id)}
                     />
                 </ListGroupItem>
             )
