@@ -14,17 +14,13 @@ const PostList = ({posts, onDelete, onToggle})=> {
                 <ListGroupItem key={id}>
                     <PostListItem 
                     
-                        {...itemProps}
-                        // label={item.label}
-                        // important={item.important}
+                        {...itemProps} // label={item.label} important={item.important}
                         onDelete={() => onDelete(id)}
                         onToggleImportant={() => onToggle(id, true)}
                         onToggleLiked={() => onToggle(id)}
                     />
                 </ListGroupItem>
             )
-
-        
     });
 
     return(

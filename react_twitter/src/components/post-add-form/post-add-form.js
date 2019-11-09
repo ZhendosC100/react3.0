@@ -4,25 +4,23 @@ import { Button } from 'reactstrap';
 import './post-add-form.css';
 
 export default class PostAddForm extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            text: ""
-        }
-        this.onValueChange = this.onValueChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
 
+    state = {
+        text: ""
     }
 
-    onValueChange(e){
-       this.setState({
-           text: e.target.value
+    onValueChange = ({target: {value}}) => {  //т.к event объект со свойствами (в нашем случае target и он имеет одно из свойств - value)
+       this.setState({                         // поэтому деструктиризируем (извлекаем) его. было text: e.target.value
+           text: value
        })
     }
 
-    onSubmit(e){
+    onSubmit = (e) => {
+        const {onAdd} = this.props;
+        const {text} = this.state;
+
         e.preventDefault();
-        this.props.onAdd(this.state.text);
+        onAdd(text);
         this.setState({
             text: ""
         });
@@ -49,12 +47,6 @@ export default class PostAddForm extends Component{
                     Add
                 </Button>
                 
-                {/* <button
-                    type="submit"
-                    className="btn btn-outline-secondary"
-                    onClick={() => onAdd('hello')}
-                >
-                Add</button> */}
             </form>
         )
     }
