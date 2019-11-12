@@ -4,38 +4,14 @@ import Header from '../header';
 import RandomChar from '../randomChar';
 import ItemList from '../itemList';
 import CharDetails from '../charDetails';
-import GotService from '../../services'
+import GotService from '../../services';
 
 
 export default class App extends Component {
 
 
-    getConsoleRes = () => {
-
-        const gotService = new GotService();
-
-            gotService.getAllCharacters()
-                .then(res => console.log(res));
-
-            gotService.getCharacter(103)
-                .then(res => console.log(res));
-
-            gotService.getAllbooks()
-                .then(res => console.log(res));
-
-            gotService.getBook(4)
-                .then(res => console.log(res));
-            
-            gotService.getAllHouses()
-                .then(res => console.log(res));
-            
-            gotService.getHouse(2)
-                .then(res => console.log(res));
-
-    }
-
     render(){
-        this.getConsoleRes();
+        // this.getConsoleRes();
         return (
             <> 
                 <Container>
@@ -60,3 +36,28 @@ export default class App extends Component {
         );
     }
 };
+
+ // getConsoleRes = () => {
+
+    //     const gotService = new GotService();
+
+    //         gotService.getAllCharacters()
+    //             .then(res => console.log(res));
+
+    //         gotService.getCharacter(103)
+    //             .then(res => console.log(res));
+
+    //         gotService.getAllbooks()
+    //             .then(res => console.log(res));
+
+    //         gotService.getBook(4)
+    //             .then(res => console.log(res));
+            
+    //         gotService.getAllHouses()
+    //             .then(res => console.log(res));
+            
+    //         gotService.getHouse(2)
+    //             .then(res => console.log(res));
+
+    // }
+
