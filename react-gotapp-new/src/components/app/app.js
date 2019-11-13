@@ -4,24 +4,49 @@ import Header from '../header';
 import RandomChar from '../randomChar';
 import ItemList from '../itemList';
 import CharDetails from '../charDetails';
+import './app.css';
 // import GotService from '../../services';
 
 
 export default class App extends Component {
 
+    state = {
+        hide: false,
+        btn: 'click to hide'
+    }
+
+    clickTohide = () => {
+      const {hide} = this.state;
+      if (!hide){
+        this.setState({
+          hide: !hide,
+          btn: 'click to show'
+        })
+      } else {
+        this.setState({
+          hide: !hide,
+          btn: 'click to hide'
+        })
+      }
+    }
 
     render(){
         // this.getConsoleRes();
+          const {hide, btn} = this.state;
+
+          const randomBlock = !hide ? <RandomChar/> : null
         return (
             <> 
+              
                 <Container>
                     <Header />
                 </Container>
                 <Container>
                     <Row>
                         <Col lg={{size: 5, offset: 0}}>
-                            <RandomChar/>
+                            {randomBlock}
                         </Col>
+                        <button className="random-hide" onClick={this.clickTohide}> {btn} </button>
                     </Row>
                     <Row>
                         <Col md='6'>
