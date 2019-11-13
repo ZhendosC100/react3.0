@@ -45,8 +45,9 @@ export default class App extends Component {
                     <Row>
                         <Col lg={{size: 5, offset: 0}}>
                             {randomBlock}
+                            <button className="random-hide" onClick={this.clickTohide}> {btn} </button>
                         </Col>
-                        <button className="random-hide" onClick={this.clickTohide}> {btn} </button>
+                        
                     </Row>
                     <Row>
                         <Col md='6'>
