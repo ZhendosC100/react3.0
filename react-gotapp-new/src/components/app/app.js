@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import {Col, Row, Container} from 'reactstrap';
 import Header from '../header';
 import RandomChar from '../randomChar';
-import ItemList from '../itemList';
-import CharDetails from '../charDetails';
 import './app.css';
+import ErrorMessage from '../errorMessage';
+import CharacterPage from '../characterPage';
 // import GotService from '../../services';
 
 
@@ -12,51 +12,47 @@ export default class App extends Component {
 
     state = {
         hide: false,
-        btn: 'click to hide'
+        error: false
     }
 
-    clickTohide = () => {
-      const {hide} = this.state;
-      if (!hide){
-        this.setState({
-          hide: !hide,
-          btn: 'click to show'
-        })
-      } else {
-        this.setState({
-          hide: !hide,
-          btn: 'click to hide'
-        })
-      }
+    // componentDidCatch() {
+    //   console.log('error');
+    //   this.setState({
+    //     error: true
+    //   })
+    // }
+    componentDidCatch = () =>  {
+      this.setState(({error}) => ({error: true}));
     }
+
+    clickTohide = () => { this.setState( ({hide}) => ({hide: !hide}) )}
+
 
     render(){
         // this.getConsoleRes();
-          const {hide, btn} = this.state;
+          const {hide} = this.state;
 
-          const randomBlock = !hide ? <RandomChar/> : null
+          if (this.state.error){
+            return <ErrorMessage/>
+          }
+
         return (
             <> 
               
                 <Container>
                     <Header />
+                    <button color="link" className="random-hide" onClick={this.clickTohide}> {hide ? "press to show" : "press to hide"} </button>
                 </Container>
                 <Container>
                     <Row>
                         <Col lg={{size: 5, offset: 0}}>
-                            {randomBlock}
-                            <button className="random-hide" onClick={this.clickTohide}> {btn} </button>
+                            {hide || <RandomChar/> }
                         </Col>
                         
                     </Row>
-                    <Row>
-                        <Col md='6'>
-                            <ItemList />
-                        </Col>
-                        <Col md='6'>
-                            <CharDetails />
-                        </Col>
-                    </Row>
+                    <CharacterPage/>
+                    <CharacterPage/>
+                    <CharacterPage/>
                 </Container>
             </>
         );
