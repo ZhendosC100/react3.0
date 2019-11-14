@@ -50,9 +50,9 @@ export default class App extends Component {
                         </Col>
                         
                     </Row>
-                    <CharacterPage/>
-                    <CharacterPage/>
-                    <CharacterPage/>
+                    <CharacterPage startChar={220} pageId={5}/>
+                    <CharacterPage startChar={122} pageId={8}/>
+                    <CharacterPage startChar={127} pageId={6}/>
                 </Container>
             </>
         );

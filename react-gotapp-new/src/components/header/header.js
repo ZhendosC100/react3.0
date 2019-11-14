@@ -3,13 +3,13 @@ import './header.css';
 
 const Header = () => {
     return (
-        <div className="header-block">
-            <h3 className="header-title">
+        <div className="headers-block">
+            <h3 className="headers-title">
                 <a href="#2">
                 Game of Thrones DB
                 </a>
             </h3>
-            <ul className="header-links">
+            <ul className="headers-links">
                 <li>
                     <a href="#2">Characters</a>
                 </li>

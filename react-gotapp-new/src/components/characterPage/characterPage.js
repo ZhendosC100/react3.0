@@ -6,8 +6,9 @@ import CharDetails from '../charDetails';
 import ErrorMessage from '../errorMessage';
 
 export default class CharacterPage extends Component {
+  
   state = {
-    selectedChar: 130,
+    selectedChar: this.props.startChar,
     error: false
   }
 
@@ -23,7 +24,7 @@ export default class CharacterPage extends Component {
     
   }
     render(){
-
+    const {pageId} = this.props;
       if(this.state.error) {
         return <ErrorMessage/>
       }
@@ -31,7 +32,7 @@ export default class CharacterPage extends Component {
       return (
         <Row>
         <Col md='6'>
-          <ItemList onCharSelected={this.onCharSelected} />
+          <ItemList onCharSelected={this.onCharSelected} pageId={pageId} />
         </Col>
         <Col md='6'>
             <CharDetails charId={this.state.selectedChar}/>

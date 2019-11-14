@@ -17,7 +17,9 @@ export default class ItemList extends Component {
   }
 
   componentDidMount = () => {
-    this.gotService.getAllCharacters()
+    const {pageId} = this.props;
+    // console.log(this.props)
+    this.gotService.getAllCharacters(pageId)
       .then((charList) => {
         this.setState({
           charList

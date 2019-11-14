@@ -3,7 +3,7 @@ export default class GotService {
         this._apiBase = 'https://www.anapioficeandfire.com/api';
     }
 
-    async getResource(url){
+    getResource = async (url) => {
         const res = await fetch(`${this._apiBase}${url}`);
 
         if(!res.ok) {
@@ -13,37 +13,37 @@ export default class GotService {
         return await res.json();
     }
 
-    async getAllCharacters(){
-        const res = await this.getResource(`/characters?page=5&pageSize=10`);
+    getAllCharacters = async (pageId) => {
+        const res = await this.getResource(`/characters?page=${pageId}&pageSize=10`);
         return res.map(this._transformCharacter);
     }
 
-    async getCharacter(id){
+    getCharacter = async (id) => {
         const character = await this.getResource(`/characters/${id}`);
         return this._transformCharacter(character);
     }
 
-    async getAllbooks(){
+    getAllbooks = async () => {
         const resBooks = await this.getResource(`/books/`);
         return resBooks.map(this._transformBook);
     }
 
-    async getBook(id){
+    getBook = async (id) => {
         const book = await this.getResource(`/books/${id}`);
         return this._transformBook(book);
     }
 
-    async getAllHouses(){
+    getAllHouses = async () => {
         const resHouse = await this.getResource(`/houses/`);
         return resHouse.map(this._transformHouse);
     }
 
-    async getHouse(id){
+    getHouse = async (id) => {
         const house = await this.getResource(`/houses/${id}`);
         return this._transformHouse(house);
     }
 
-    _transformCharacter(char) {
+    _transformCharacter = (char) => {
         return {
           name: char.name,
           gender: char.gender,
@@ -54,7 +54,7 @@ export default class GotService {
         }
     }
 
-    _transformHouse(house){
+    _transformHouse = (house) => {
       return {
         name: house.name,
         region: house.region,
@@ -65,7 +65,7 @@ export default class GotService {
       }
     }
 
-    _transformBook(book) {
+    _transformBook = (book) => {
       return {
         name: book.name,
         numberOfPages: book.numberOfPages,
