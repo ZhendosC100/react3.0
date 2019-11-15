@@ -4,6 +4,16 @@ import ErrorMessage from '../errorMessage';
 import gotService from '../../services';
 import Spinner from '../spinner';
 
+const Field =({char, field, label}) => {
+  return (
+    <li className="list-group-item d-flex justify-content-between">
+      <span className="term"> {label} </span>
+      <span> {char[field] || "no data..."} </span>
+  </li>
+  )
+}
+ 
+export {Field};
 
 export default class CharDetails extends Component {
 
@@ -54,28 +64,18 @@ export default class CharDetails extends Component {
         )
       }
 
-      const{name, gender, born, died, culture} = this.state.char;
+      const {char} = this.state;
+      const{name} = char;
       
         return (
             <div className="char-details rounded">
                 <h4> {name || "no data..."} </h4>
                 <ul className="list-group list-group-flush">
-                    <li className="list-group-item d-flex justify-content-between">
-                        <span className="term">Gender</span>
-                        <span> {gender || "no data..."} </span>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between">
-                        <span className="term">Born</span>
-                        <span> {born || "no data..."} </span>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between">
-                        <span className="term">Died</span>
-                        <span> {died || "no data..."} </span>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between">
-                        <span className="term">Culture</span>
-                        <span> {culture || "no data..."} </span>
-                    </li>
+                  {
+                    React.Children.map(this.props.children, (child) => {
+                      return React.cloneElement(child, {char})
+                    })
+                  }
                 </ul>
             </div>
         );

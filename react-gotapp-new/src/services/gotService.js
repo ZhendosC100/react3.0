@@ -48,8 +48,7 @@ export default class GotService {
         return  idres;
     }
 
-    _transformCharacter = (char) => {
-       const id =  this._itemId(char);
+    _transformCharacter = (char) => { 
         return {
           name: char.name,
           gender: char.gender,
@@ -57,12 +56,11 @@ export default class GotService {
           died: char.died,
           culture: char.culture,
           url: char.url,
-          id: id
+          id: this._itemId(char)
         }
     }
 
     _transformHouse = (house) => {
-        const id =  this._itemId(house);
       return {
         name: house.name,
         region: house.region,
@@ -70,18 +68,17 @@ export default class GotService {
         titles: house.titles,
         overlord: house.overlord,
         ancestralWeapons: house.ancestralWeapons,
-        id: id
+        id: this._itemId(house)
       }
     }
 
     _transformBook = (book) => {
-        const id =  this._itemId(book);
       return {
         name: book.name,
         numberOfPages: book.numberOfPages,
         publiser: book.publiser,
         relesead: book.relesead,
-        id: id
+        id: this._itemId(book)
       }
     }
 }
