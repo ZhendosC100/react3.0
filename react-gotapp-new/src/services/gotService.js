@@ -23,7 +23,7 @@ export default class GotService {
         return this._transformCharacter(character);
     }
 
-    getAllbooks = async () => {
+    getAllBooks = async () => {
         const resBooks = await this.getResource(`/books/`);
         return resBooks.map(this._transformBook);
     }
@@ -76,8 +76,9 @@ export default class GotService {
       return {
         name: book.name,
         numberOfPages: book.numberOfPages,
-        publiser: book.publiser,
-        relesead: book.relesead,
+        publisher: book.publisher,
+        released: book.released,
+        authors: book.authors,
         id: this._itemId(book)
       }
     }

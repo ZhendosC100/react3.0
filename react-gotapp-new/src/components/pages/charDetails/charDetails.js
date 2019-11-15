@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import './charDetails.css';
-import ErrorMessage from '../errorMessage';
-import gotService from '../../services';
-import Spinner from '../spinner';
+import ErrorMessage from '../../errorMessage';
+import gotService from '../../../services';
+import Spinner from '../../spinner';
 
-const Field =({char, field, label}) => {
+const Field =({itemObj, field, label}) => {
   return (
     <li className="list-group-item d-flex justify-content-between">
       <span className="term"> {label} </span>
-      <span> {char[field] || "no data..."} </span>
+      <span> {itemObj[field] || "no data..."} </span>
   </li>
   )
 }
@@ -20,7 +20,7 @@ export default class CharDetails extends Component {
   gotService = new gotService();
 
   state ={
-    char: null, 
+    itemObj: null, 
     error: false
   }
 
@@ -29,43 +29,44 @@ export default class CharDetails extends Component {
   }
 
   componentDidMount = () => {
-    this.updateChar();
+    this.updateItem();
   }
 
   componentDidUpdate = (prevProps) => {
-    if (this.props.charId !== prevProps.charId){
-      this.updateChar();
+    if (this.props.itemId !== prevProps.itemId){
+      this.updateItem();
     }
   }
 
-  updateChar = () => {
-    const {charId} = this.props;
-    if (!charId) {
+  updateItem = () => {
+    const {itemId} = this.props;
+    if (!itemId) {
       return;
     }
-    this.gotService.getCharacter(charId)
-      .then((char) => {
-        this.setState({char});
+    const {getItemData} = this.props;
+    getItemData(itemId)
+      .then((itemObj) => {
+        this.setState({itemObj});
       })
       // this.foo.bar = 0;
   }
     render() {
-
+      const {nameItemBlock} = this.props;
       if(this.state.error){
        return <ErrorMessage/>
       }
 
-      if(!this.state.char){
+      if(!this.state.itemObj){
         return (
           <>
-            <span className='select-error'>Please select a character</span>
+            <span className='select-error'>Please select a {nameItemBlock || "something..."}</span>
             <Spinner/>
           </>
         )
       }
 
-      const {char} = this.state;
-      const{name} = char;
+      const {itemObj} = this.state;
+      const{name} = itemObj;
       
         return (
             <div className="char-details rounded">
@@ -73,7 +74,7 @@ export default class CharDetails extends Component {
                 <ul className="list-group list-group-flush">
                   {
                     React.Children.map(this.props.children, (child) => {
-                      return React.cloneElement(child, {char})
+                      return React.cloneElement(child, {itemObj})
                     })
                   }
                 </ul>

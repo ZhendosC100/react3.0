@@ -1,20 +1,20 @@
 import React, {Component} from 'react';
-import './characterPage.css';
+import '.';
 // import {Col, Row} from 'reactstrap';
 import ItemList from '../itemList';
 import CharDetails, {Field} from '../charDetails';
-import ErrorMessage from '../errorMessage';
-import gotService from '../../services';
+import ErrorMessage from '../../errorMessage';
+import gotService from '../../../services';
 import RowBlock from '../rowBlock';
 
 
 
 
-export default class CharacterPage extends Component {
+export default class BookPage extends Component {
   gotService = new gotService();
 
   state = {
-    selectedChar: 130,
+    selectedItem: 12,
     error: false
   }
 
@@ -25,7 +25,7 @@ export default class CharacterPage extends Component {
   onItemSelected = (id) => {
 
     this.setState({
-      selectedChar: id
+      selectedItem: id
     })
     
   }
@@ -38,16 +38,20 @@ export default class CharacterPage extends Component {
       const itemList = (
           <ItemList 
             onItemSelected={this.onItemSelected} 
-            getData={this.gotService.getAllCharacters}
-            renderItem={({name, gender}) => `${name} (${gender})`}/>
+            getData={this.gotService.getAllHouses}
+            renderItem={({name, region}) => `${name} (${region})`}/>
       );
 
       const charDetails = (
-        <CharDetails charId={this.state.selectedChar}>
-          <Field field='gender' label='Gender'/>
-          <Field field='born' label='Born'/>
-          <Field field='died' label='Died'/>
-          <Field field='culture' label='Culture'/>
+        <CharDetails 
+          nameItemBlock={'book'}
+          itemId={this.state.selectedItem}
+          getItemData={this.gotService.getHouse}>
+            <Field field='region' label='Region'/>
+            <Field field='words' label='Words'/>
+            <Field field='titles' label='Titles'/>
+            <Field field='overlord' label='Overlord'/>
+            <Field field='ancestralWeapons' label='Ancestral Weapons'/>
         </CharDetails>
       );
 
