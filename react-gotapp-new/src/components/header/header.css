@@ -5,7 +5,7 @@
     height: 80px;
 }
 
-.header-title h3{
+.header-title {
     font-size: 24px;
     color: #fff;
     margin: 0;
@@ -19,7 +19,7 @@
     list-style-type: none;
 }
 
-.header-links ul li{
+.header-links > li{
     margin-right: 20px;
     font-size: 18px;
 }

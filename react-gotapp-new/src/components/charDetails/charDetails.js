@@ -48,8 +48,8 @@ export default class CharDetails extends Component {
       if(!this.state.char){
         return (
           <>
-            <Spinner/>
             <span className='select-error'>Please select a character</span>
+            <Spinner/>
           </>
         )
       }

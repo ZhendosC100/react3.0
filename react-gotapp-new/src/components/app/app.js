@@ -5,10 +5,13 @@ import RandomChar from '../randomChar';
 import './app.css';
 import ErrorMessage from '../errorMessage';
 import CharacterPage from '../characterPage';
-// import GotService from '../../services';
+import ItemList from '../itemList';
+import CharDetails from '../charDetails';
+import GotService from '../../services';
 
 
 export default class App extends Component {
+  gotService = new GotService();
 
     state = {
         hide: false,
@@ -51,8 +54,28 @@ export default class App extends Component {
                         
                     </Row>
                     <CharacterPage/>
-                    <CharacterPage/>
-                    <CharacterPage/>
+                    <Row>
+                      <Col md='6'>
+                        <ItemList 
+                          onCharSelected={this.onCharSelected} 
+                          getData={this.gotService.getAllbooks}
+                          renderItem={(item) => item.name}/>
+                      </Col>
+                      <Col md='6'>
+                          <CharDetails charId={this.state.selectedChar}/>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md='6'>
+                        <ItemList 
+                          onCharSelected={this.onCharSelected} 
+                          getData={this.gotService.getAllHouses}
+                          renderItem={(item) => item.name}/>
+                      </Col>
+                      <Col md='6'>
+                          <CharDetails charId={this.state.selectedChar}/>
+                      </Col>
+                    </Row>
                 </Container>
             </>
         );
