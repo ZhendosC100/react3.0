@@ -14,7 +14,7 @@ export default class BookPage extends Component {
   gotService = new gotService();
 
   state = {
-    selectedItem: 12,
+    selectedItem: null,
     error: false
   }
 
@@ -44,7 +44,7 @@ export default class BookPage extends Component {
 
       const charDetails = (
         <CharDetails 
-          nameItemBlock={'book'}
+          nameItemBlock={'house'}
           itemId={this.state.selectedItem}
           getItemData={this.gotService.getHouse}>
             <Field field='region' label='Region'/>

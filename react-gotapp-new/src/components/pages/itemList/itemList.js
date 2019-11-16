@@ -14,6 +14,7 @@ export default class ItemList extends Component {
     this.setState(({error}) => ({error: true}));
   }
 
+
   componentDidMount = () => {
     const {getData} = this.props;
     getData()

@@ -14,7 +14,7 @@ export default class BookPage extends Component {
   gotService = new gotService();
 
   state = {
-    selectedItem: 12,
+    selectedItem: null,
     error: false
   }
 

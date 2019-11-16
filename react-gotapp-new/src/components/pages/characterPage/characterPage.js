@@ -14,7 +14,7 @@ export default class CharacterPage extends Component {
   gotService = new gotService();
 
   state = {
-    selectedItem: 130,
+    selectedItem: null,
     error: false
   }
 
