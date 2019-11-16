@@ -7,10 +7,8 @@ import ErrorMessage from '../errorMessage';
 import CharacterPage from '../pages/characterPage';
 import BookPage from '../pages/bookPage';
 import HousePage from '../pages/housePage'; 
-// import ItemList from '../itemList';
-// import CharDetails from '../charDetails';
 import GotService from '../../services';
-// import {Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 
 export default class App extends Component {
@@ -37,7 +35,8 @@ export default class App extends Component {
           }
 
         return (
-            <> 
+            <Router>
+              <div className="app"> 
               <Container>
                 <Header />
                 <button color="link" className="random-hide" onClick={this.clickTohide}> {hide ? "press to show" : "press to hide"} </button>
@@ -48,11 +47,14 @@ export default class App extends Component {
                     {hide || <RandomChar/> }
                   </Col>     
                 </Row>
-                <CharacterPage/>
-                <BookPage/>
-                <HousePage/>
+
+                <Route path='/characters' component={CharacterPage} />
+                <Route path='/houses' component={HousePage} />
+                <Route path='/books' component={BookPage} />
+                
                 </Container>
-            </>
+              </div>
+            </Router>
         );
     }
 };
