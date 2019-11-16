@@ -50,7 +50,6 @@ export default class App extends Component {
                 <CharacterPage/>
                 <BookPage/>
                 <HousePage/>
-                    
                 </Container>
             </>
         );
