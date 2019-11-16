@@ -28,7 +28,7 @@ export default class App extends Component {
 
 
     render(){
-        // this.getConsoleRes();
+        
           const {hide} = this.state;
 
           if (this.state.error){
@@ -50,28 +50,7 @@ export default class App extends Component {
                 <CharacterPage/>
                 <BookPage/>
                 <HousePage/>
-                    {/* <Row>
-                      <Col md='6'>
-                        <ItemList 
-                          onItemSelected={this.onItemSelected} 
-                          getData={this.gotService.getAllbooks}
-                          renderItem={(item) => item.name}/>
-                      </Col>
-                      <Col md='6'>
-                          <CharDetails charId={this.state.selectedChar}/>
-                      </Col>
-                    </Row> */}
-                    {/* <Row>
-                      <Col md='6'>
-                        <ItemList 
-                          onItemSelected={this.onItemSelected} 
-                          getData={this.gotService.getAllHouses}
-                          renderItem={(item) => item.name}/>
-                      </Col>
-                      <Col md='6'>
-                          <CharDetails charId={this.state.selectedChar}/>
-                      </Col>
-                    </Row> */}
+                    
                 </Container>
             </>
         );
