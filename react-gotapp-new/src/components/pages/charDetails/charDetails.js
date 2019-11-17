@@ -9,7 +9,7 @@ const Field =({itemObj, field, label}) => {
     <li className="list-group-item d-flex justify-content-between">
       <span className="term"> {label} </span>
       <span> {itemObj[field] || "no data..."} </span>
-  </li>
+    </li>
   )
 }
  
@@ -54,8 +54,21 @@ export default class CharDetails extends Component {
     const {getItemData} = this.props;
     getItemData(itemId)
       .then((itemObj) => {
+        // this.setState({itemObj});
+        // if(itemObj){
+
+        //   this.setState({loading: false});
+        // }
         this.setState({itemObj});
         if(itemObj){
+
+          for(let key in itemObj){
+            if(itemObj[key] === [""] || itemObj[key] == ""){
+              itemObj[key] = "no data..((";
+            }
+          }
+
+          this.setState({itemObj});
           this.setState({loading: false});
         }
       });
@@ -85,13 +98,14 @@ export default class CharDetails extends Component {
       }
       
         const{name} = itemObj;
+        
         return (
           <div className="char-details rounded">
               <h4> {name || "no data..."} </h4>
               <ul className="list-group list-group-flush">
                 {
                   React.Children.map(this.props.children, (child) => {
-                    return React.cloneElement(child, {itemObj})
+                    return React.cloneElement(child, {itemObj}||'no data..')
                   })
                 }
               </ul>

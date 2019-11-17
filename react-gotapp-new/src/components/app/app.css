@@ -1,12 +1,38 @@
 .random-hide{
-    width: 128px;
-    height: 33px;
+    width: 189px;
+    height: 40px;
     margin-bottom: 20px;
-    border: 2px solid #00BCD4;
+    border: 2px solid #bdccce;
     border-radius: 10px;
-    background-color: aquamarine;
+    background-color: #101d26;
+    box-shadow: 1px 3px 6px 0 beige;
+    color: #d3dedf;
+    text-shadow: -7px -11px 3px beige;
 }
 
 .random-block{
     margin-bottom: 5px;
+}
+
+.random-block > h4 {
+    color: #a56b13;
+    text-shadow: 1px 1px 0 #3f3019;
+}
+
+.books-page{
+    overflow-x: hidden;
+    background: url('./img/book_page.jpg') center center no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.title_welcome{
+    color: #414142;
+    text-shadow: 1px 1px 0 #eef3f3;
+    font-size: 28px;
+}
+
+.title_select{
+    color: #9E9E9E;
+    text-shadow: 1px 1px 2px #8c99a2;
 }
