@@ -81,21 +81,8 @@ export default class CharDetails extends Component {
        return <ErrorMessage/>
       }
 
-      if(loading){
-        return (
-          <>
-            <Spinner/>
-          </>
-        )
-      }
-      
-      if(!itemObj){
-        return (
-          <>
-            <span className='select-error'>Please select a {nameItemBlock || "something..."}</span>
-          </>
-        )
-      }
+      if(loading){ return <Spinner/> };
+      if(!itemObj){ return <span className='select-error'>Please select a {nameItemBlock || "something..."}</span> }
       
         const{name} = itemObj;
         
