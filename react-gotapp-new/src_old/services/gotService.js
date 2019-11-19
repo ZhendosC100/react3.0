@@ -50,35 +50,35 @@ export default class GotService {
 
     _transformCharacter = (char) => { 
         return {
-          name: char.name || "no data..",
-          gender: char.gender || "no data..",
-          born: char.born || "no data..",
-          died: char.died || "no data..",
-          culture: char.culture || "no data..",
-          url: char.url || "no data..",
+          name: char.name,
+          gender: char.gender,
+          born: char.born,
+          died: char.died,
+          culture: char.culture,
+          url: char.url,
           id: this._itemId(char)
         }
     }
 
     _transformHouse = (house) => {
       return {
-        name: house.name || "no data..",
-        region: house.region || "no data..",
-        words: house.words || "no data..",
-        titles: house.titles || "no data..",
-        overlord: house.overlord || "no data..",
-        ancestralWeapons: house.ancestralWeapons || "no data..",
+        name: house.name,
+        region: house.region,
+        words: house.words,
+        titles: house.titles,
+        overlord: house.overlord,
+        ancestralWeapons: house.ancestralWeapons,
         id: this._itemId(house)
       }
     }
 
     _transformBook = (book) => {
       return {
-        name: book.name || "no data..",
-        numberOfPages: book.numberOfPages || "no data..",
-        publisher: book.publisher || "no data..",
-        released: book.released || "no data..",
-        authors: book.authors || "no data..",
+        name: book.name,
+        numberOfPages: book.numberOfPages,
+        publisher: book.publisher,
+        released: book.released,
+        authors: book.authors,
         id: this._itemId(book)
       }
     }

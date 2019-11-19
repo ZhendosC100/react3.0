@@ -1,0 +1,106 @@
+
+
+@keyframes lds-blocks {
+    0% {
+      background: #60cfc3;
+    }
+    12.5% {
+      background: #60cfc3;
+    }
+    12.625% {
+      background: #362fc2;
+    }
+    100% {
+      background: #362fc2;
+    }
+  }
+  @-webkit-keyframes lds-blocks {
+    0% {
+      background: #60cfc3;
+    }
+    12.5% {
+      background: #60cfc3;
+    }
+    12.625% {
+      background: #362fc2;
+    }
+    100% {
+      background: #362fc2;
+    }
+  }
+  .s1 {
+    left:38px;
+    top:38px;
+    -webkit-animation: lds-blocks 1.5s linear infinite;
+    animation: lds-blocks 1.5s linear infinite;
+    animation-delay:0s;
+  } 
+  .s2{
+    left:80px;
+    top:38px;
+    -webkit-animation: lds-blocks 1.5s linear infinite;
+    animation: lds-blocks 1.5s linear infinite;
+    animation-delay:0.1875s;
+  }
+  .s3{
+    left:122px;
+    top:38px;
+    -webkit-animation: lds-blocks 1.5s linear infinite;
+    animation: lds-blocks 1.5s linear infinite;
+    animation-delay:0.375s;
+  }
+  .s4{
+    left:38px;
+    top:80px;
+    -webkit-animation: lds-blocks 1.5s linear infinite;
+    animation: lds-blocks 1.5s linear infinite;
+    animation-delay:1.3125s
+  }
+  .s5{
+    left:122px;
+    top:80px;
+    -webkit-animation: lds-blocks 1.5s linear infinite;
+    animation: lds-blocks 1.5s linear infinite;
+    animation-delay:0.5625s;
+  }
+  .s6{
+    left:38px;
+    top:122px;
+    -webkit-animation: lds-blocks 1.5s linear infinite;
+    animation: lds-blocks 1.5s linear infinite;
+    animation-delay:1.125s;
+  }
+  .s7{
+    left:80px;
+    top:122px;
+    -webkit-animation: lds-blocks 1.5s linear infinite;
+    animation: lds-blocks 1.5s linear infinite;
+    animation-delay:0.9375s;
+  }
+  .s8{
+    left:122px;
+    top:122px;
+    -webkit-animation: lds-blocks 1.5s linear infinite;
+    animation: lds-blocks 1.5s linear infinite;
+    animation-delay:0.75s;
+  }
+  .lds-blocks {
+    position: relative;
+    margin: 0 auto;
+  }
+  .lds-blocks div {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 10%;
+    background: #362fc2;
+  }
+  .lds-blocks {
+    width: 150px !important;
+    height: 150px !important;
+    -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+    transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+  }
+
+  
+

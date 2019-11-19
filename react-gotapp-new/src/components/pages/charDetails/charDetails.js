@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React, {useState, useEffect} from 'react';
 import './charDetails.css';
-import ErrorMessage from '../../errorMessage';
-import gotService from '../../../services';
+// import ErrorMessage from '../../errorMessage';
+// import gotService from '../../../services';
 import Spinner from '../../spinner';
 
 const Field =({itemObj, field, label}) => {
@@ -15,89 +15,256 @@ const Field =({itemObj, field, label}) => {
  
 export {Field};
 
-export default class CharDetails extends Component {
+// const CharDetails = (props) => {
 
-  gotService = new gotService();
+  
 
-  state ={
-    itemObj: null,
-    loading: false,
-    error: false
-  }
+//   // state ={
+//   //   itemObj: null,
+//   //   loading: false,
+//   //   error: false
+//   // }
 
-  componentDidCatch = () =>{
-    this.setState(({error}) => ({error: true}));
-  }
+//   // componentDidCatch = () =>{
+//   //   this.setState(({error}) => ({error: true}));
+//   // }
 
-  componentDidMount = () => {
-    this.updateItem();
-  }
+//   // componentDidMount = () => {
+//   //   this.updateItem();
+//   // }
 
-  componentDidUpdate = (prevProps) => {
-    if (this.props.itemId !== prevProps.itemId){
-      this.updateItem();
-    }
-  }
+//   // componentDidUpdate = (prevProps) => {
+//   //   if (this.props.itemId !== prevProps.itemId){
+//   //     this.updateItem();
+//   //   }
+//   // }
 
-  onItemLoaded = () => {
-    this.setState({ 
-      loading: false
-    })
-  }
+//   // onItemLoaded = () => {
+//   //   this.setState({ 
+//   //     loading: false
+//   //   })
+//   // }
+//   const {itemId, getItemData, nameItemBlock} = props;
 
-  updateItem = () => {
-    const {itemId} = this.props;
-    if (!itemId) {
-      return;
-    }
-    this.setState({loading: true});
-    const {getItemData} = this.props;
-    getItemData(itemId)
-      .then((itemObj) => {
-        // this.setState({itemObj});
-        // if(itemObj){
+//   const [itemObj, setItemObj] = useState([]);
 
-        //   this.setState({loading: false});
-        // }
-        this.setState({itemObj});
-        if(itemObj){
 
-          for(let key in itemObj){
-            if(itemObj[key] === [""] || itemObj[key] == ""){
-              itemObj[key] = "no data..((";
-            }
-          }
-
-          this.setState({itemObj});
-          this.setState({loading: false});
-        }
-      });
-      // this.foo.bar = 0;
-  }
-    render() {
-      const {nameItemBlock} = this.props;
-      const {error, itemObj, loading} = this.state;
-      if(error){
-       return <ErrorMessage/>
-      }
-
-      if(loading){ return <Spinner/> };
-      if(!itemObj){ return <span className='select-error'>Please select a {nameItemBlock || "something..."}</span> }
-      
-        const{name} = itemObj;
+//   useEffect (() => {
+    
+//     if (!itemId) {
+//       return;
+//     }
+    
+//     getItemData(itemId)
+//       .then((itemObj) => {
         
-        return (
-          <div className="char-details rounded">
-              <h4> {name || "no data..."} </h4>
-              <ul className="list-group list-group-flush">
-                {
-                  React.Children.map(this.props.children, (child) => {
-                    return React.cloneElement(child, {itemObj}||'no data..')
-                  })
-                }
-              </ul>
-          </div>
-        );
+//         setItemObj(itemObj);
+        
+        
+//       });
+//       // this.foo.bar = 0;
+//   }, [])
+    
 
-    }
-}
+    
+//       // if(error){
+//       //  return <ErrorMessage/>
+//       // }
+
+//       // if(loading){ return <Spinner/> };
+//       // if(!itemObj){ return <span className='select-error'>Please select a {nameItemBlock || "something..."}</span> }
+      
+//         // const{name} = itemObj;
+        
+//         return (
+//           <div className="char-details rounded">
+//               {/* <h4> {name || "no data..."} </h4> */}
+//               <ul className="list-group list-group-flush">
+//                 {
+//                   React.Children.map(props.children, (child) => {
+//                     return React.cloneElement(child, {itemObj}||'no data..')
+//                   })
+//                 }
+//               </ul>
+//           </div>
+//         );
+
+    
+// }
+
+// export default CharDetails;
+
+////98787556454453453234
+
+// function CharDetails({itemId, getItemData, nameItemBlock}) {
+
+//   // let gotService = new gotService();
+
+//   // state ={
+//   //   itemObj: [],
+//   //   loading: false,
+//   //   error: false
+//   // }
+
+//   const [itemObj, setUpdateObj] = useState([]);
+//   const [loading, setOnLoaded] = useState(false);
+//   // componentDidCatch = () =>{
+//   //   this.setState(({error}) => ({error: true}));
+//   // }
+
+
+//   console.log(itemId);
+//   useEffect(() => {
+//     if (itemId) {
+//       getItemData(itemId)
+//     .then((response) => {
+//         setOnLoaded (true);
+//         setUpdateObj(response);
+//         setOnLoaded (false);
+//         console.log(itemObj);
+      
+//     });
+//     }
+//     console.log(itemId);
+    
+    
+//   }, []);
+
+//   // onItemLoaded = () => {
+//   //   this.setState({ 
+//   //     loading: false
+//   //   })
+//   // }
+
+//  let updateItem = () => {
+    
+//     if (!itemId) {
+//       return;
+//     }
+    
+    
+//       // this.foo.bar = 0;
+//   }
+  
+    
+//       // const {nameItemBlock} = this.props;
+//       // const {error, itemObj, loading} = this.state;
+//       // if(error){
+//       //  return <ErrorMessage/>
+//       // }
+
+//       if(loading){ return <Spinner/> };
+//       if(!itemObj){ return <span className='select-error'>Please select a {nameItemBlock || "something..."}</span> }
+      
+//         const[name] = itemObj;
+//         console.log(itemObj);
+        
+//         return (
+//           <div className="char-details rounded">
+//               <h4> {name || "no data..."} </h4>
+//               <ul className="list-group list-group-flush">
+//                 {
+//                   React.Children.map(this.props.children, (child) => {
+//                     return React.cloneElement(child, {itemObj}||'no data..')
+//                   })
+//                 }
+//               </ul>
+//           </div>
+          
+//         );
+
+    
+// }
+
+// export default CharDetails;
+
+////89675456453mnvhgcfdgfdss
+
+
+
+// export default class CharDetails extends Component {
+
+//   gotService = new gotService();
+
+//   state ={
+//     itemObj: null,
+//     loading: false,
+//     error: false
+//   }
+
+//   componentDidCatch = () =>{
+//     this.setState(({error}) => ({error: true}));
+//   }
+
+//   componentDidMount = () => {
+//     this.updateItem();
+//   }
+
+//   componentDidUpdate = (prevProps) => {
+//     if (this.props.itemId !== prevProps.itemId){
+//       this.updateItem();
+//     }
+//   }
+
+//   onItemLoaded = () => {
+//     this.setState({ 
+//       loading: false
+//     })
+//   }
+
+//   updateItem = () => {
+//     const {itemId} = this.props;
+//     if (!itemId) {
+//       return;
+//     }
+//     this.setState({loading: true});
+//     const {getItemData} = this.props;
+//     getItemData(itemId)
+//       .then((itemObj) => {
+//         // this.setState({itemObj});
+//         // if(itemObj){
+
+//         //   this.setState({loading: false});
+//         // }
+//         this.setState({itemObj});
+//         if(itemObj){
+
+//           for(let key in itemObj){
+//             if(itemObj[key] === [""] || itemObj[key] == ""){
+//               itemObj[key] = "no data..((";
+//             }
+//           }
+
+//           this.setState({itemObj});
+//           this.setState({loading: false});
+//         }
+//       });
+//       // this.foo.bar = 0;
+//   }
+//     render() {
+//       const {nameItemBlock} = this.props;
+//       const {error, itemObj, loading} = this.state;
+//       if(error){
+//        return <ErrorMessage/>
+//       }
+
+//       if(loading){ return <Spinner/> };
+//       if(!itemObj){ return <span className='select-error'>Please select a {nameItemBlock || "something..."}</span> }
+      
+//         const{name} = itemObj;
+        
+//         return (
+//           <div className="char-details rounded">
+//               <h4> {name || "no data..."} </h4>
+//               <ul className="list-group list-group-flush">
+//                 {
+//                   React.Children.map(this.props.children, (child) => {
+//                     return React.cloneElement(child, {itemObj}||'no data..')
+//                   })
+//                 }
+//               </ul>
+//           </div>
+//         );
+
+//     }
+// }
