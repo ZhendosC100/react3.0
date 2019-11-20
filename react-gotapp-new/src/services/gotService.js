@@ -62,12 +62,12 @@ export default class GotService {
 
     _transformHouse = (house) => {
       return {
-        name: house.name || "no data..",
-        region: house.region || "no data..",
-        words: house.words || "no data..",
-        titles: house.titles || "no data..",
-        overlord: house.overlord || "no data..",
-        ancestralWeapons: house.ancestralWeapons || "no data..",
+        name: house.name || "no data..((",
+        region: house.region || "no data..((",
+        words: house.words || "no data..((",
+        titles: house.titles || "no data..((",
+        overlord: house.overlord || "no data..((",
+        ancestralWeapons: house.ancestralWeapons || "no data..((",
         id: this._itemId(house)
       }
     }

@@ -1,98 +1,87 @@
 import React, {useState, useEffect} from 'react';
 import './charDetails.css';
-// import ErrorMessage from '../../errorMessage';
+import ErrorMessage from '../../errorMessage';
 // import gotService from '../../../services';
 import Spinner from '../../spinner';
 
-const Field =({itemObj, field, label}) => {
+
+const Field =({field, label, obj}) => {
+  
   return (
     <li className="list-group-item d-flex justify-content-between">
       <span className="term"> {label} </span>
-      <span> {itemObj[field] || "no data..."} </span>
+      <span> {obj[field] || "no data..."} </span>
     </li>
   )
 }
  
 export {Field};
 
-// const CharDetails = (props) => {
-
-  
-
-//   // state ={
-//   //   itemObj: null,
-//   //   loading: false,
-//   //   error: false
-//   // }
-
-//   // componentDidCatch = () =>{
-//   //   this.setState(({error}) => ({error: true}));
-//   // }
-
-//   // componentDidMount = () => {
-//   //   this.updateItem();
-//   // }
-
-//   // componentDidUpdate = (prevProps) => {
-//   //   if (this.props.itemId !== prevProps.itemId){
-//   //     this.updateItem();
-//   //   }
-//   // }
-
-//   // onItemLoaded = () => {
-//   //   this.setState({ 
-//   //     loading: false
-//   //   })
-//   // }
-//   const {itemId, getItemData, nameItemBlock} = props;
-
-//   const [itemObj, setItemObj] = useState([]);
+function CharDetails ({itemId, getItemData, nameItemBlock, children}){
 
 
-//   useEffect (() => {
+  const [itemObj, setItemObj] = useState([]);
+  const [loading, setOnLoading] = useState(false);
+  const [err, setOnError] = useState(false);
+
+  const onError = () => {
+    setOnLoading(false)
+    setOnError(true)
+  }
+
+  useEffect(() => {
+        update()
+  }, [itemId])
+
+const update = () => {
+  setOnLoading(true)
+    if(!itemId) return
+    getItemData(itemId)
+       .then((res) => {
+          for (let key in res){
+            if(res[key] === [""] || res[key] == ""){
+              res[key] = "no data..(("
+            }
+          }
+          setItemObj(res)
+          setOnLoading(false)
+       })
+       .catch(onError)
+     
+}
+
+      const{name} = itemObj;
+
+      const DetailsList = ({childrens, names, obj}) => {
+        return (
+          <div className="char-details rounded">
+              <h4> {names || "no data..."} </h4>
+              <ul className="list-group list-group-flush">
+                {
+                  React.Children.map(childrens, (child) => {
+                    return React.cloneElement(child, {obj}||'no data..')
+                  })
+                  
+                }
+              </ul>
+          </div>
+        );
+      }
+
+      if(err) {return <ErrorMessage/>}
+
+      if(itemObj.length === 0){ return <span className='select-error'>Please select a {nameItemBlock || "something..."}</span> }
+
+      return (
+        <>
+          {loading ? <Spinner/> : <DetailsList names={name} childrens={children} obj={itemObj}/>}
+        </>
+      )  
     
-//     if (!itemId) {
-//       return;
-//     }
-    
-//     getItemData(itemId)
-//       .then((itemObj) => {
-        
-//         setItemObj(itemObj);
-        
-        
-//       });
-//       // this.foo.bar = 0;
-//   }, [])
-    
+}
+ 
 
-    
-//       // if(error){
-//       //  return <ErrorMessage/>
-//       // }
-
-//       // if(loading){ return <Spinner/> };
-//       // if(!itemObj){ return <span className='select-error'>Please select a {nameItemBlock || "something..."}</span> }
-      
-//         // const{name} = itemObj;
-        
-//         return (
-//           <div className="char-details rounded">
-//               {/* <h4> {name || "no data..."} </h4> */}
-//               <ul className="list-group list-group-flush">
-//                 {
-//                   React.Children.map(props.children, (child) => {
-//                     return React.cloneElement(child, {itemObj}||'no data..')
-//                   })
-//                 }
-//               </ul>
-//           </div>
-//         );
-
-    
-// }
-
-// export default CharDetails;
+export default CharDetails;
 
 ////98787556454453453234
 

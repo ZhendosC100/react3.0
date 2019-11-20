@@ -29,6 +29,9 @@ export default class BookPage extends Component {
     })
     
   }
+
+  
+ 
     render(){
 
       if(this.state.error) {
@@ -46,7 +49,8 @@ export default class BookPage extends Component {
         <CharDetails 
           nameItemBlock={'house'}
           itemId={this.state.selectedItem}
-          getItemData={this.gotService.getHouse}>
+          getItemData={this.gotService.getHouse}
+          >
             <Field field='region' label='Region'/>
             <Field field='words' label='Words'/>
             <Field field='titles' label='Titles'/>
