@@ -1,47 +1,28 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import reducer from './reducer';
 
-const reducer = (state = 0, action) => {
-    switch(action.type){
-        case 'INC' :
-            return state +1;
-        case 'DEC' :
-            return state -1;
-        case 'RND' :
-            return  state + action.value;
-        default: 
-            return state = 0
-    }
-}
+import App from './components/app';
+
+
+
 
 const store = createStore(reducer);
 
-const inc = () => ({type: 'INC'});
-const dec = () => ({type: 'DEC'});
-// const rnd = (value) => ({type: 'RND', value});
-const res = () => ({type: 'res'});
 
 
+// const {inc, dec, res} = bindActionCreators(actions, dispatch);
+// const decDispatch = bindActionCreators(dec, dispatch);
+// const resDispatch = bindActionCreators(res, dispatch);
 
-document.getElementById('inc').addEventListener('click', () =>{
-    // store.dispatch({type:'INC'});
-    store.dispatch(inc());
-
-})
-document.getElementById('dec').addEventListener('click', () =>{
-    // store.dispatch({type:'DEC'});
-    store.dispatch(dec());
-})
-
-document.getElementById('res').addEventListener('click', () =>{
+    ReactDOM.render (
+        <Provider store={store}>
+            <App/>
+        </Provider>
     
-    store.dispatch(res());
-})
+    , document.getElementById('root'));
 
 
-
-const update = () => {
-    document.querySelector('.counter-text').textContent = store.getState();
-}
-
-store.subscribe(update);
 

@@ -45,33 +45,33 @@ button > img {
     transform: translate(-50%, -50%);
 }
 
-#dec{
+.dec{
     background: #E7AA10;
     border-radius: 4px;
 }
 
 
-#inc{
+.inc{
     background: #089C20;
     border-radius: 4px;
 }
 
 
-#res{
+.res{
     background: #CF1C1C;
     border-radius: 4px;
 }
 
-#download, #upload {
+.download, .upload {
     margin-top: 24px;
 }
 
-#download > img, #upload > img{
+.download > img, .upload > img{
     top: 50%;
     left: 50%;
 }
 
-#counter{
+.counter{
     display: flex;
     justify-content: center;
     align-items: center;
