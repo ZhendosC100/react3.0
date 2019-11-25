@@ -1,5 +1,6 @@
 .menu {
     &__item {
+        position: relative;
         width: 350px;
         min-height: 400px;
         background-color: #fff;
@@ -38,5 +39,11 @@
         color: #fff;
         font-size: 16px;
         cursor: pointer;
+    }
+    &__icon{
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        width: 30px;
     }
 }
